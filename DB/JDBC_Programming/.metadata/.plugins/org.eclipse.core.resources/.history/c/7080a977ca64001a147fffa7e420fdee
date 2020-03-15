@@ -1,0 +1,82 @@
+package _04_BatchQuery;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class BatchQuery {
+	static {
+		// 1) 패키지 클래스 경로를 문자열 전달해서 객체 생성
+		// Class.forName("oracle.jdbc.driver.OracleDriver");
+		try {
+//			oracle.jdbc.driver.OracleDriver oraDriver = 
+//					new oracle.jdbc.driver.OracleDriver();
+//			DriverManager.registerDriver(oraDriver);
+			DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void main(String[] args) {
+		// 2) 객체 변수 선언
+		Connection con = null;	// 오라클 서버 연결
+		Statement stmt = null;	// Query문 전송
+		ResultSet rs = null;	// SELECT문 결과
+		boolean isCommit = false;	// 트랜잭션 완료/미완료
+		
+		try {
+			// 3) 오라클 서버 접속
+			con = DriverManager.getConnection(
+					"jdbc:oracle:thin@localhost:1521:xe",
+					"bitcamp",
+					"bitcamp");
+			if(con!=null){
+				System.out.println("Oracle Server 연결 성공!");
+			}
+			
+			// 4) Query문 전송 객체 생성
+			stmt = con.createStatement();
+			
+			// 5) 만일 test4테이블이 있다면 삭제
+			try {
+				stmt.executeUpdate("DROP TABLE test4");
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs!=null) rs.close();
+				if(stmt!=null) stmt.close();
+				if(con!=null) con.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

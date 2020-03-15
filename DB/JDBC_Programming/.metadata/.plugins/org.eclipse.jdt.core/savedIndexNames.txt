@@ -1,0 +1,8 @@
+INDEX VERSION 1.131+C:\Users\chris\Desktop\DB\lecture\JDBC_Programming\.metadata\.plugins\org.eclipse.jdt.core
+2870026723.index
+737403945.index
+1778034923.index
+316314433.index
+1674064784.index
+725435400.index
+3392882544.index

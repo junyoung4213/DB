@@ -1,0 +1,5 @@
+package _02_JDBC_PreparedStatement;
+
+public class JdbcPreparedStatement {
+
+}
