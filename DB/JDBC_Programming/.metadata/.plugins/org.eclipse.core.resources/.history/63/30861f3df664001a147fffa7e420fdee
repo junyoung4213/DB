@@ -1,7 +1,0 @@
-package _07_ConnectionPool;
-
-public class ConnectionPoolEx {
-	public static void main(String[] args) {
-		
-	}
-}
